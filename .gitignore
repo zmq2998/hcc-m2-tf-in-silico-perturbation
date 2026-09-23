@@ -1,0 +1,35 @@
+# ---- R -----------------------------------------------------------------
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# ---- analysis outputs / intermediates (keep small CSV tables tracked) ---
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+logs/
+!logs/.gitkeep
+*.rds
+*.h5ad
+*.h5
+*.mtx
+*.mtx.gz
+
+# ---- large / binary artifacts -------------------------------------------
+*.tar.gz
+*.zip
+
+# ---- OS / editor --------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ---- secrets ------------------------------------------------------------
+.env
+*.token
+zenodo_token*

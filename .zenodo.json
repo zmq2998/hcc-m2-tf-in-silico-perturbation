@@ -1,0 +1,37 @@
+{
+  "title": "Analysis code: In silico perturbation of single-cell gene regulatory networks identifies transcription factors governing M2 macrophage polarization in hepatocellular carcinoma",
+  "description": "R code implementing an in silico TF perturbation framework for single-cell RNA-seq data: Seurat processing of GSE140228 and GSE149614, GENIE3 gene regulatory network inference, random walk with restart (RWR) using every candidate TF as an individual seed node, regulatory impact scoring on a 13-gene M2 signature [score(TF) = (1/|M2|) * sum_{g in M2} pi_g(TF)], 1,000 TF-label permutations with standardized effect sizes and Benjamini-Hochberg correction, ranking-stability analysis across restart probabilities, and monocle3 pseudotime reconstruction. Companion code for the manuscript submitted to Life (MDPI).",
+  "creators": [
+    {
+      "name": "【Author names to be completed】",
+      "affiliation": "【Institution to be completed】"
+    }
+  ],
+  "keywords": [
+    "hepatocellular carcinoma",
+    "M2 polarization",
+    "transcription factors",
+    "gene regulatory network",
+    "in silico perturbation",
+    "single-cell RNA-seq",
+    "random walk with restart",
+    "GENIE3"
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140228",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE149614",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "Zenodo reads this file automatically when a GitHub release is archived. Replace the placeholder creator names/affiliation and, once the manuscript is published, add the DOI of the article under related_identifiers with relation 'isSupplementTo'."
+}

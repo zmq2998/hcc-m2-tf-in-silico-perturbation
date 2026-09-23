@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the manuscript and this software release."
+title: "Analysis code: In silico perturbation of single-cell gene regulatory networks identifies transcription factors governing M2 macrophage polarization in hepatocellular carcinoma"
+type: software
+authors:
+  - family-names: "【Family name to be completed】"
+    given-names: "【Given name to be completed】"
+    affiliation: "【Institution to be completed】"
+    orcid: ""
+repository-code: "https://github.com/【USERNAME】/hcc-m2-tf-in-silico-perturbation"
+url: "https://github.com/【USERNAME】/hcc-m2-tf-in-silico-perturbation"
+license: MIT
+version: "1.0.0"
+date-released: "2026-09-23"
+keywords:
+  - hepatocellular carcinoma
+  - M2 polarization
+  - gene regulatory network
+  - in silico perturbation
+  - single-cell RNA-seq
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.【ZENODO_ID】"
+    description: "Zenodo DOI of this release (fill in after archiving)"
+references:
+  - type: article
+    title: "Identifying Transcription Factors Governing M2 Polarization in Hepatocellular Carcinoma via In Silico Perturbation of Single-Cell Gene Regulatory Networks"
+    journal: "Life"
+    authors:
+      - family-names: "【Family name to be completed】"
+    year: 2026
+    notes: "Manuscript submitted to Life (MDPI)"
