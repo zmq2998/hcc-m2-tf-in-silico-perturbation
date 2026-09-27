@@ -1,7 +1,8 @@
 # =====================================================================
 #  06_robustness_restart_probability.R
 #  Stability of the top-25 ranking across restart probabilities r
-#  (Methods 2.4, Figure S2)  -- replaces the former 5-fold CV analysis
+#  (Methods 2.4, Figure S2)  -- complements the 5-fold network
+#  cross-validation (Methods 2.8); it does not replace it
 #
 #  Out: results/Table_S3_restart_stability.csv
 #       figures/Figure_S2_restart_stability.pdf

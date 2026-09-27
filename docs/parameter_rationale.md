@@ -1,8 +1,9 @@
 # Parameter rationale and analysis notes
 
 This note records **why** each parameter in `config.R` has the value it has,
-so that reviewers can judge analyst degrees of freedom. Values marked
-【verify】 must be confirmed against the final manuscript text / original runs.
+so that reviewers can judge analyst degrees of freedom. All values were last
+reconciled with the final manuscript text and the original analysis runs on
+2026-09-27.
 
 ## 2.1 Single-cell processing (Seurat 4.3.0)
 
@@ -65,19 +66,33 @@ so that reviewers can judge analyst degrees of freedom. Values marked
 * Limitation acknowledged in the manuscript: pseudotime assumes a
   unidirectional monocyte → M2 trajectory and cannot capture TAM plasticity.
 
-## Removed analysis
+## Network cross-validation and ranking robustness
 
-The earlier 5-fold cross-validation (MAE) was **dropped**: it is not a
-standard validation for RWR-based prioritisation and its fold definition was
-ambiguous. It is replaced by the restart-probability stability analysis
-(Figure S2). If a link-prediction-style validation is required later,
-implement it as hidden-edge hold-out with AUC.
+Two distinct checks are reported; they answer different questions.
 
-## 【verify】 before submission
+* **Network cross-validation (Methods 2.8).** The inferred GRN is evaluated by
+  5-fold cross-validation under a hidden-edge link-prediction protocol: in each
+  fold, 20% of the TF–target edges are withheld at random, GENIE3 is re-run on
+  the remaining edges with identical parameters, and the withheld edges are
+  scored against an equal number of randomly sampled non-edges. Performance is
+  summarised by the area under the ROC curve (AUC); fold-wise values are
+  reported in the manuscript (Section 2.8). This measures the *predictive
+  performance* of the network.
+* **Ranking stability across restart probabilities (Methods 2.4, Figure S2;
+  `06_robustness_restart_probability.R`).** Spearman ρ of the top-25 ranking is
+  computed over *r* = 0.1–0.9. This measures the *robustness of the
+  prioritisation* to the restart parameter, not predictive performance.
 
-1. Confirm the final numbers in `results/` reproduce the manuscript values
-   (25 significant TFs; NR4A2 = 11.77, ATF3 = 9.87, JUN = 6.65; 9,847 edges).
-2. Confirm the patient/sample description of GSE140228 and GSE149614 against
-   the GEO records (Section 2.1 of the manuscript).
-3. If the original runs used different parameter values, update `config.R`
-   rather than editing scripts — everything is centralised there.
+An earlier 5-fold cross-validation scored by mean absolute error (MAE) is
+**not** used: MAE over continuous edge weights is not a standard criterion for
+ranking-based prioritisation, and its fold definition (edges vs. targets) was
+ambiguous. The hidden-edge AUC protocol above supersedes it.
+
+## Reproducibility checks (last verified 2026-09-27)
+
+1. Values under `results/` reproduce the manuscript numbers (25 significant
+   TFs; NR4A2 = 11.77, ATF3 = 9.87, JUN = 6.65; 9,847 edges).
+2. Sample descriptions for GSE140228 and GSE149614 follow the corresponding
+   GEO records (manuscript Section 2.1).
+3. If a run uses different parameter values, update `config.R` rather than
+   editing the analysis scripts — everything is centralised there.

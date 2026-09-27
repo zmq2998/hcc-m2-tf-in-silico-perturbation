@@ -24,7 +24,9 @@ Most computational TF-prioritisation strategies rank regulators by **static expr
    where `π_g(TF)` is the stationary probability of gene *g* when *TF* is the seed and |M2| = 13;
 5. calibrates the score against **1,000 label permutations** (TF identity shuffled across edges, preserving topology and target degree distribution), reporting standardized effect sizes `(observed − mean_null) / sd_null`, fold-changes and Benjamini–Hochberg *q* values;
 6. checks robustness of the top-25 ranking across restart probabilities *r* = 0.1–0.9 (Spearman ρ);
-7. reconstructs a monocyte → macrophage **monocle3** pseudotime trajectory and TF–M2 correlation structure.
+7. reconstructs a monocyte → macrophage **monocle3** pseudotime trajectory and TF–M2 correlation structure;
+8. evaluates the inferred network by **5-fold cross-validation** under a
+   hidden-edge link-prediction protocol, reporting the AUC (Methods 2.8).
 
 Result: **25 TFs** significantly influence the M2 programme, led by **NR4A2** (standardized effect size = 11.77), **ATF3** (9.87) and **JUN** (6.65), with **PPARG** placed downstream of 14 of them.
 
@@ -100,6 +102,9 @@ Rscript 01_data_preparation.R --discovery_dir=/path/to/GSE140228 --validation_di
 * Fixed seed `SEED <- 20260923L` (`config.R`); permutation block seeds are `SEED + b`.
 * All parameters (QC thresholds, gene sets, tree count, pruning threshold, restart probability, permutation count) live in `config.R` — no magic numbers in the analysis scripts.
 * Convergence criterion for RWR: `‖Δπ‖ < 1 × 10⁻⁶`, `max_iter = 1000`.
+* Network cross-validation (Methods 2.8): 5 folds, 20% of the TF–target edges
+  withheld per fold, GENIE3 re-run on the remaining edges, withheld edges scored
+  against an equal number of random non-edges; performance reported as AUC.
 * Runtimes: GENIE3 is the bottleneck (≈ hours on 8 cores for ~14k myeloid cells); set `GRN$n_trees` lower for a quick smoke test.
 
 ---
