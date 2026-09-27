@@ -114,4 +114,4 @@ Code released under the [MIT License](LICENSE). Result tables and figures are re
 
 ## Contact
 
-Corresponding author: *【to be completed】* — see the published article for contact details.
+Corresponding author: Mengqing Zhou (School of Biological Engineering, Henan University of Technology, Zhengzhou 450001, China) — tiankong168@haut.edu.cn; ORCID: 0009-0008-8091-9266.
